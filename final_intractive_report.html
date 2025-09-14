@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گزارش زمانی پروژه گلبهار - سروش یاسینی</title>
+    <style>
+        body {
+            font-family: 'Iranian Sans', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+            direction: rtl;
+            text-align: right;
+            background: linear-gradient(to bottom right, #eff6ff, #dbeafe);
+        }
+        pre {
+            background: #2d2d2d;
+            color: #fff;
+            border-radius: 4px;
+            margin: 0.5em 0;
+            direction: ltr;
+            text-align: left;
+            padding: 10px;
+        }
+        code {
+            font-family: 'Fira Code', Consolas, Monaco, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
+        }
+        :not(pre)>code {
+            background: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #e83e8c;
+        }
+        img {
+            max-width: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+            direction: rtl;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        blockquote {
+            border-right: 4px solid #ddd;
+            padding-right: 1em;
+            margin-right: 0;
+            color: #666;
+            direction: rtl;
+            text-align: right;
+        }
+        h1 {
+            font-size: 2.2em;
+            color: #2c3e50;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin: 1.5rem 0;
+        }
+        h3 {
+            font-size: 1.4em;
+            color: #455a64;
+        }
+        h4 {
+            font-size: 1.2em;
+            color: #4a6a78;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .metric-card {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e5e7eb;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #6b7280;
+        }
+.tab.active {
+    background: #e0e7ff !important;
+    color: #1e3a8a !important;
+}
+.tab:hover {
+    background: #dbeafe;
+    color: #1e40af;
+}
+        .progress-bar {
+            width: 100%;
+            background: #e5e7eb;
+            border-radius: 9999px;
+            height: 8px;
+            margin-top: 8px;
+        }
+        .progress {
+            height: 100%;
+            border-radius: 9999px;
+        }
+        canvas {
+            max-width: 100%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Markdown Content -->
+        <div class="card">
+            <h1>گزارش زمانی پروژه گلبهار</h1>
+            <p><strong>تولید شده در:</strong> بیست و سه شهریور ۱۴۰۴</p>
+            <h2>زمان صرف شده بر اساس دسته‌بندی و زیربخش</h2>
+            <hr>
+            <h3>دسته‌بندی: مطالعه اولیه و آماده‌سازی محیط پردازش</h3>
+            <p><strong>کل زمان:</strong> ۲۷.۰ روز</p>
+            <ul>
+                <li><strong>وظیفه: نرم‌افزار سار پروز</strong><br>
+                    <strong>زمان صرف شده:</strong> ۴.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: برخی از مراحل: نصب متلب، مکاتبه برای دریافت سریال نامبر و نصب ماشین مجازی</blockquote>
+                </li>
+                <li><strong>وظیفه: مطالعه در مورد پردازش با سارپروز</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱۴.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: پس از تست‌های فراوان با دیتاست انویست، تصمیم بر آن شد که سارپروز کنار گذاشته شود و به صورت کلی پردازش برای این سنجنده با اسباس صورت بگیرد</blockquote>
+                </li>
+                <li><strong>وظیفه: کانفیگ متلب برای پردازش پی‌اس</strong><br>
+                    <strong>زمان صرف شده:</strong> ۲.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: مطالعه در مورد پوشش سنجنده‌های مختلف در محدوده مکانی</strong><br>
+                    <strong>زمان صرف شده:</strong> ۷.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: در این گام، در نهایت با اسکریپت پایتون، تمامی داده‌های قابل دسترس در نمودار زمانی از بازه زمانی ۲۰۰۰ تا ۲۰۲۴ میلادی ترسیم شد و در اولین جلسه با گلبهار، مورد بحث قرار گرفت</blockquote>
+                </li>
+            </ul>
+            <h3>دسته‌بندی: دانلود داده</h3>
+            <p><strong>کل زمان:</strong> ۳۸.۰ روز</p>
+            <h4>زیربخش: دانلود دیتاست سنتینل-۱</h4>
+            <p><strong>زمان صرف شده:</strong> ۲۱.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: حدود ۲ ترابایت داده خام سنینل دانلود شد. دانلود به صورت شبانه‌روزی صورت گرفت یعنی در بازه حدود ۱۴ روزه و روزی بیش از ۱۲ ساعت کار. برای این‌کار، ای‌پی‌آی جدیدی در زبان پایتون توسعه یافت چون دیگر سازمان فضایی اروپا اجازه دانلود به روش قبل را نمی‌داد.</blockquote>
+            <h4>زیربخش: دانلود داده پیش‌پردازش‌شده از لیک اسباس</h4>
+            <p><strong>زمان صرف شده:</strong> ۱۴.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: فرایند به شدت با اخلال بود چرا که آی‌پی ایران در آن زمان بلاک می‌شد. بسیاری از فایل‌ها در نهایت به صورت دستی دانلود شد و با اسکریپت‌نویسی در پوشه مربوطه قرار گرفت.</blockquote>
+            <h4>زیربخش: دانلود فایل اربیت</h4>
+            <p><strong>زمان صرف شده:</strong> ۳.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: اسکریپت توسعه داده شد تا به صورت خودکار، حدود ۷۰۰ فایل اربیت برای همه تصاویر سنتینل دانلود شود</blockquote>
+            <h3>دسته‌بندی: پردازش سنجش‌ازدور</h3>
+            <p><strong>کل زمان:</strong> ۱۴۰.۰ روز</p>
+            <h4>زیربخش: پردازش تصاویر خام بالاگذر سنتینل برای روش پی‌اس</h4>
+            <p><strong>زمان صرف شده:</strong> ۵۰.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: شامل همه مراحل از قبیل تشکیل اینترفروگرام تا تولید نقاط. به تفصیل در گزارش فصل سوم آمده است. مراحل با نرم‌افزار استمپس و محیط متلب صورت گرفت</blockquote>
+            <h4>زیربخش: پردازش تصاویر خام پایین‌گذر سنتینل برای روش پی‌اس</h4>
+            <p><strong>زمان صرف شده:</strong> ۵۰.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: شامل همه مراحل از قبیل تشکیل اینترفروگرام تا تولید نقاط. به تفصیل در گزارش فصل سوم آمده است. مراحل با نرم‌افزار استمپس و محیط متلب صورت گرفت</blockquote>
+            <h4>زیربخش: پردازش تصاویر پیش‌پردازش‌شده سنتینل بالاگذر برای روش اسباس</h4>
+            <p><strong>زمان صرف شده:</strong> ۲۰.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: مراحل با نرم‌افزار لیک اسباس انجام شد، برخی مراحل برای بهبود دقت چند بار انجام شد. شرح تکنیکال در مقاله و گزارش فصل سوم آمده</blockquote>
+            <h4>زیربخش: پردازش تصاویر پیش‌پردازش‌شده سنتینل پایین‌گذر برای روش اسباس</h4>
+            <p><strong>زمان صرف شده:</strong> ۲۰.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: مراحل با نرم‌افزار لیک اسباس انجام شد، برخی مراحل برای بهبود دقت چند بار انجام شد. شرح تکنیکال در مقاله و گزارش فصل سوم آمده</blockquote>
+            <h3>دسته‌بندی: GIS</h3>
+            <p><strong>کل زمان:</strong> ۵۱.۰ روز</p>
+            <h4>زیربخش: استخراج اسلایس‌های زمانی از دیتابیس فرونشست اسباس</h4>
+            <p><strong>زمان صرف شده:</strong> ۷.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: توسعه کد برای استخراج اوتوماتیک داده از تنسور مکان زمان بالاگذر و پایین‌گذر</blockquote>
+            <h4>زیربخش: جمع‌آوری و مرتب‌سازی داده‌های مربوط به فصل دوم</h4>
+            <p><strong>زمان صرف شده:</strong> ۱۴.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: داده‌ها از منابع مختلف سرجمع و پوشه‌بندی شدند. بسیاری از داده‌ها نیاز به تغییرات جی‌آی‌اسی و تنظیم سیستم مختصات داشتند. در نهایت همه داده‌ها در گوگل درایو به صورت پوشه‌بندی‌شده ذخیره شد.</blockquote>
+            <h4>زیربخش: استخراج، پس‌پردازش و نمایش داده پی‌اس</h4>
+            <p><strong>زمان صرف شده:</strong> ۱۴.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: در این گام، داده‌های پردازش‌شده در متلب، با اسکریپت‌نویسی با زبان متلب به صورت فایل اکسل از نرم‌افزار خارج شد. داده خام پردازش شد و مختصات و تایم‌سری آن برای نمایش بهینه شد. در نهایت کد پایتون توسعه یافت تا به صورت تعاملی بتوان سری زمانی نقاط دلخواه را ترسیم کرد.</blockquote>
+            <h4>زیربخش: تولید نقشه</h4>
+            <p><strong>کل زمان:</strong> ۳۹.۰ روز</p>
+            <ul>
+                <li><strong>وظیفه: شکل۴-۱-نقشه موقعیت دشت مشهد</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۲-نقشه واحدهای زمین‌شناسی دشت مشهد</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۳-نقشه نفوذپذیری دشت مشهد</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۴-نقشه پوشش اراضی در محدوده دشت مشهد</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۵-نقشه زمین‌شناسی شهر جدید گلبهار و محیط پیرامون آن</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۶-نقشه پوشش اراضی در گلبهار و حریم آن</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۷-نقشه هم‌ضخامت آبرفت در محدوده دشت مشهد</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۱۰-موقعیت گسل‌های دشت مشهد به همراه موقعیت شهر جدید گلبهار</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۱۱-موقعیت گسل‌های پیرامون محدوده مورد مطالعه</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۱۲-موقعیت سونداژها و خطوط برداشت بر روی محدوده مورد مطالعه</strong><br>
+                    <strong>زمان صرف شده:</strong> ۲.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۱۳-نقشه هم‌مقاومت ویژه</strong><br>
+                    <strong>زمان صرف شده:</strong> ۲.۰ روز<br>
+                    <blockquote>حاشی‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۱۴-نقشه هم‌مقاومت ویژه ظاهری</strong><br>
+                    <strong>زمان صرف شده:</strong> ۲.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۱۵-نقشه هم‌مقاومت ویژه ظاهری</strong><br>
+                    <strong>زمان صرف شده:</strong> ۲.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۳۳-نقشه میانگین میزان فرونشست</strong><br>
+                    <strong>زمان صرف شده:</strong> ۲.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۳۴-نقشه ارتباط واحدهای زمین‌شناسی با فرونشست در شمال شرق محدوده</strong><br>
+                    <strong>زمان صرف شده:</strong> ۲.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۴-۳۵-نقشه ارتباط گسل چشمه گیالس با فرونشست در شمال شرق محدوده</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۳-۲-پوشش سنجنده‌های راداری در محدوده مطالعات</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۳-۴-بخشی از کد توسعه‌یافته با زبان پایتون جهت ترسیم خروجی روش PS</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۳-۱۴-نرخ فرونشست سالانه محدوده گلبهار در بازه زمانی ۱۳۸۲ تا ۱۳۸۴ (پایین‌گذر)</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۳-۱۵-نرخ فرونشست سالانه محدوده گلبهار در بازه زمانی ۱۳۸۹ تا ۱۳۹۰ (پایین‌گذر)</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۳-۱۶-فلوچارت مراحل پردازش تصاویر راداری سنتینل</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۳-۲۴-نرخ میانگین سالانه فرونشست محدوده گلبهار در بازه ۱۴۰۳-۱۳۹۴ (سنجنده سنتینل، بالاگذر)</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۳-۲۵-نرخ میانگین سالانه فرونشست محدوده گلبهار در بازه ۱۴۰۲-۱۳۹۴ (سنجنده سنتینل، پایین‌گذر)</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۳-۲۶-میزان تجمعی فرونشست محدوده گلبهار در بازه ۱۴۰۳-۱۳۹۴ (سنجنده سنتینل، بالاگذر)</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۳-۲۷-میزان تجمعی فرونشست محدوده گلبهار در بازه ۱۴۰۲-۱۳۹۴ (سنجنده سنتینل، پایین‌گذر)</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: اشکال ۲۷ تا ۴۴ شامل فرونشست سالانه و سال به سال</strong><br>
+                    <strong>زمان صرف شده:</strong> ۷.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۳-۵۶-نرخ فرونشست سالانه محدوده مطالعاتی به روش Persistant Scatterer (سنجنده سنتینل)</strong><br>
+                    <strong>زمان صرف شده:</strong> ۴.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+                <li><strong>وظیفه: شکل۳-۵۷-موقعیت مکانی ایستگاه GNSS گلمکان</strong><br>
+                    <strong>زمان صرف شده:</strong> ۲.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: بدون توضیحات</blockquote>
+                </li>
+            </ul>
+            <h4>زیربخش: ذخیره داده‌ها</h4>
+            <p><strong>زمان صرف شده:</strong> ۳.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: کدگذاری و ذخیره‌سازی فایل‌ها و نقشه‌ها به صورت ژئوپکیج برای دسترسی آسان در صورت نیاز به ویرایش</blockquote>
+            <h3>دسته‌بندی: منتورینگ و همکاری با تیم</h3>
+            <p><strong>کل زمان:</strong> ۲۲.۰ روز</p>
+            <h4>زیربخش: همکاری با خانم اسماعیلی‌تبار</h4>
+            <ul>
+                <li><strong>وظیفه: آماده‌سازی سیستم شخصی</strong><br>
+                    <strong>زمان صرف شده:</strong> ۲.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: نصب ویندوز و نرم‌افزار آرک‌جی‌آی‌اس پرو برای سهولت طراحی نقشه‌های جی‌آی‌اسی</blockquote>
+                </li>
+                <li><strong>وظیفه: انتقال دانش</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱۰.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: انتقال دانش جی‌آی‌اسی و طراحی قالب‌های تهیه نقشه، برگزاری جلسات دو نفره برای رفع عیوب احتمالی</blockquote>
+                </li>
+            </ul>
+            <h4>زیربخش: همکاری با آقای شریفیان</h4>
+            <ul>
+                <li><strong>وظیفه: ترسیم داده‌های ژئوتکنیک</strong><br>
+                    <strong>زمان صرف شده:</strong> ۱۰.۰ روز<br>
+                    <blockquote>حاشیه‌نویسی: برگزاری جلسات دو نفره برای نیازسنجی، توسعه نقشه‌های تعاملی و وب‌مپ برای ایشان</blockquote>
+                </li>
+            </ul>
+            <h3>دسته‌بندی: گزارش‌نویسی و مستندسازی</h3>
+            <p><strong>کل زمان:</strong> ۱۴.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: تولید گزارش جامع مسیر پردازشی برای فصل سوم</blockquote>
+            <h3>دسته‌بندی: مصورسازی داده‌ها</h3>
+            <p><strong>کل زمان:</strong> ۵۷.۰ روز</p>
+            <h4>زیربخش: مقایسه جی‌پی‌اس و اینسار</h4>
+            <p><strong>زمان صرف شده:</strong> ۷.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: هک اخلاقی سامانه فروش محتوای سازمان نقشه‌برداری، نرمال‌سازی سری زمانی ایستگاه گلمکان، استخراج داده متناظر با ایستگاه، ترسیم و محاسبات معادله خطی درجه یک<br>
+            <strong>تمامی کد‌ها به صورت اپن‌سورس در لینک گیت‌هاب موجود است</strong></blockquote>
+            <h4>زیربخش: گراف‌های مقایسه موردی پیزومتر با اینسار</h4>
+            <p><strong>زمان صرف شده:</strong> ۳۰.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: توسعه کتابخانه‌های ترکیب داده‌های اینسار و گراف پیزومتر، تمیزکاری داده‌های پراکنده پیزومتر، توسعه کد برای ترسیم خودکار در تعداد زیاد، طراحی و پیاده‌سازی قابلیت ترسیم ترندلاین‌های شکسته و مجزا برای داده‌های دارای شکست یا نویز<br>
+            <strong>تمامی کد‌ها به صورت اپن‌سورس در لینک گیت‌هاب موجود است</strong></blockquote>
+            <h4>زیربخش: گراف‌های فرونشست نقطه‌ای نقاط پرخطر برای فصل هفتم</h4>
+            <p><strong>زمان صرف شده:</strong> ۲۰.۰ روز</p>
+            <blockquote>حاشیه‌نویسی: توسعه کد خودکار برای استخراج نقاط سری زمانی بیش از ۴۵ نقطه به صورت خودکار از تنسور تولیدشده در مراحل پردازش فرونشست، ترسیم خودکار سری زمانی نقاط با بیس‌لاین و اسکیل قابل‌تنظیم جهت بهبود مقایسه<br>
+            <strong>تمامی کد‌ها به صورت اپن‌سورس در لینک گیت‌هاب موجود است</strong></blockquote>
+            <h2>کل زمان صرف شده: ۳۴۹.۰ روز</h2>
+        </div>
+        <!-- Dashboard Section -->
+        <div class="card">
+            <h1>داشبورد تحلیل پروژه ژئواسپشال</h1>
+<div class="card" style="text-align: center; margin: 2rem 0; background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe); padding: 1.5rem; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
+    <h3 style="font-size: 1.5rem; font-weight: bold; color: #1e3a8a; margin-bottom: 1rem;">دسترسی به کدهای پروژه</h3>
+    <p style="font-size: 1rem; color: #4b5563; margin-bottom: 1rem;">تمامی کدهای توسعه‌یافته برای این پروژه به‌صورت اپن‌سورس در گیت‌هاب در دسترس است.</p>
+    <a href="https://github.com/soroushyasini/gobahar_codebase" target="_blank" style="display: inline-block; font-size: 1.25rem; font-weight: 600; color: #ffffff; background: #2563eb; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+        بازدید از مخزن گیت‌هاب
+    </a>
+</div>
+            <!-- Tab Navigation -->
+<div class="tabs" style="display: flex; justify-content: center; align-items: center; padding: 1.5rem 0; background: #f8fafc; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+    <div class="tab" data-tab="overview" style="font-size: 1.5rem; font-weight: 700; padding: 1rem 2rem; margin: 0 0.5rem; border-radius: 8px; cursor: pointer; transition: all 0.3s; background: #e0e7ff; color: #4b5563;">نمای کلی</div>
+    <div class="tab" data-tab="breakdown" style="font-size: 1.5rem; font-weight: 700; padding: 1rem 2rem; margin: 0 0.5rem; border-radius: 8px; cursor: pointer; transition: all 0.3s; background: #f3f4f6; color: #4b5563;">تفکیک</div>
+    <div class="tab" data-tab="timeline" style="font-size: 1.5rem; font-weight: 700; padding: 1rem 2rem; margin: 0 0.5rem; border-radius: 8px; cursor: pointer; transition: all 0.3s; background: #f3f4f6; color: #4b5563;">جدول زمانی</div>
+    <div class="tab" data-tab="tasks" style="font-size: 1.5rem; font-weight: 700; padding: 1rem 2rem; margin: 0 0.5rem; border-radius: 8px; cursor: pointer; transition: all 0.3s; background: #f3f4f6; color: #4b5563;">وظایف</div>
+</div>
+            <!-- Tab Content -->
+            <div id="overview" class="tab-content">
+                <div class="grid">
+                    <!-- Pie Chart -->
+                    <div class="card">
+                        <h3>توزیع کار بر اساس دسته‌بندی</h3>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                    <!-- Bar Chart -->
+                    <div class="card">
+                        <h3>روزهای صرف شده بر اساس دسته‌بندی</h3>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div id="breakdown" class="tab-content" style="display: none;">
+                <div id="breakdown-content"></div>
+            </div>
+            <div id="timeline" class="tab-content" style="display: none;">
+                <div class="card">
+                    <h3>نمایش جدول زمانی پروژه</h3>
+                    <canvas id="areaChart"></canvas>
+                </div>
+            </div>
+            <div id="tasks" class="tab-content" style="display: none;">
+                <div class="card">
+                    <h3>وظایف بر اساس زمان صرف شده</h3>
+                    <div id="tasks-content"></div>
+                </div>
+            </div>
+            <!-- Summary Stats -->
+            <div class="card">
+    <h3 style="font-size: 2rem; font-weight: bold; color: #1e3a8a; text-align: center; margin-bottom: 2rem;">خلاصه پروژه</h3>
+    <div class="grid" style="gap: 1.5rem;">
+        <div class="metric-card" style="background: linear-gradient(to bottom right, #dbeafe, #bfdbfe); border: 2px solid #3b82f6; border-radius: 12px; padding: 1.5rem; box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s;">
+            <div style="font-size: 3rem; font-weight: 800; color: #1e40af; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); line-height: 1.2;">12</div>
+            <div style="font-size: 1.25rem; color: #1f2937; font-weight: 600;">مدت زمان (ماه)</div>
+        </div>
+        <div class="metric-card" style="background: linear-gradient(to bottom right, #d1fae5, #a7f3d0); border: 2px solid #10b981; border-radius: 12px; padding: 1.5rem; box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s;">
+            <div style="font-size: 3rem; font-weight: 800; color: #065f46; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); line-height: 1.2;">349</div>
+            <div style="font-size: 1.25rem; color: #1f2937; font-weight: 600;">روزهای کاری (هفته‌های ۶ روزه)</div>
+        </div>
+        <div class="metric-card" style="background: linear-gradient(to bottom right, #f3e8ff, #e9d5ff); border: 2px solid #8b5cf6; border-radius: 12px; padding: 1.5rem; box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s;">
+            <div style="font-size: 3rem; font-weight: 800; color: #6d28d9; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); line-height: 1.2;">1396</div>
+            <div style="font-size: 1.25rem; color: #1f2937; font-weight: 600;">کل ساعات (۴ ساعت/روز)</div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+    <script>
+        // Project data
+        const projectData = {
+            categories: [
+                {
+                    name: 'مطالعه اولیه و آماده‌سازی محیط پردازش',
+                    nameEn: 'Initial Study & Environment Setup',
+                    tasks: [
+                        { task: 'نرم افزار سار پروز', taskEn: 'SARProz Software', days: 4 },
+                        { task: 'مطالعه در مورد پردازش با سارپروز', taskEn: 'SARProz Processing Study', days: 14 },
+                        { task: 'کانفیگ متلب برای پردازش پی اس', taskEn: 'MATLAB Config for PS Processing', days: 2 },
+                        { task: 'مطالعه در مورد پوشش سنجنده های مختلف', taskEn: 'Sensor Coverage Study', days: 7 }
+                    ]
+                },
+                {
+                    name: 'دانلود داده',
+                    nameEn: 'Data Download',
+                    subsections: [
+                        { name: 'دانلود دیتاست سنتینل-1', nameEn: 'Sentinel-1 Dataset Download', days: 21 },
+                        { name: 'دانلود داده پیش پردازش شده از لیک اسباس', nameEn: 'LiCSBAS Preprocessed Data', days: 14 },
+                        { name: 'دانلود فایل اربیت', nameEn: 'Orbit File Download', days: 3 }
+                    ]
+                },
+                {
+                    name: 'پردازش سنجش‌ازدور',
+                    nameEn: 'Remote Sensing Processing',
+                    subsections: [
+                        { name: 'پردازش تصاویر خام بالاگذر سنتینل برای روش پی اس', nameEn: 'Ascending Sentinel Raw Processing (PS)', days: 50 },
+                        { name: 'پردازش تصاویر خام پایین گذر سنتینل برای روش پی اس', nameEn: 'Descending Sentinel Raw Processing (PS)', days: 50 },
+                        { name: 'پردازش تصاویر پیش پردازش شده سنتینل بالا گذر برای روش اسباس', nameEn: 'Ascending Sentinel LiCSBAS Processing', days: 20 },
+                        { name: 'پردازش تصاویر پیش پردازش شده سنتینل پایین گذر برای روش اسباس', nameEn: 'Descending Sentinel LiCSBAS Processing', days: 20 }
+                    ]
+                },
+                {
+                    name: 'GIS',
+                    nameEn: 'GIS Analysis',
+                    subsections: [
+                        { name: 'استخراج اسلایس های زمانی از دیتابیس فرونشست اسباس', nameEn: 'Time Slice Extraction from LiCSBAS', days: 7 },
+                        { name: 'جمع آوری و مرتب سازی داده های مربوط به فصل 2', nameEn: 'Chapter 2 Data Collection', days: 14 },
+                        { name: 'استخراج، پس پردازش و نمایش داده پی اس', nameEn: 'PS Data Extraction & Post-processing', days: 14 },
+                        { name: 'تولید نقشه', nameEn: 'Map Production', days: 39 },
+                        { name: 'ذخیره داده‌ها', nameEn: 'Data Storage', days: 3 }
+                    ]
+                },
+                {
+                    name: 'منتورینگ و همکاری با تیم',
+                    nameEn: 'Menitoring & Team Collaboration',
+                    subsections: [
+                        { name: 'همکاری با خانم اسماعیلی تبار', nameEn: 'Collaboration with Ms. Esmaili Tabar', days: 12 },
+                        { name: 'همکاری با اقای شریفیان', nameEn: 'Collaboration with Mr. Sharifian', days: 10 }
+                    ]
+                },
+                {
+                    name: 'گزارش‌نویسی و مستندسازی',
+                    nameEn: 'Report Writing & Documentation',
+                    days: 14
+                },
+                {
+                    name: 'مصورسازی داده‌ها',
+                    nameEn: 'Data Visualization',
+                    subsections: [
+                        { name: 'مقایسه جی پی اس و اینسار', nameEn: 'GPS vs InSAR Comparison', days: 7 },
+                        { name: 'گراف های مقایسه موردی پزومتر با اینسار', nameEn: 'Piezometer vs InSAR Graphs', days: 30 },
+                        { name: 'گراف های فرونشست نقطه ای نقاط پرخطر', nameEn: 'High-risk Point Subsidence Graphs', days: 20 }
+                    ]
+                }
+            ]
+        };
+
+        // Calculate totals
+        const categoryTotals = projectData.categories.map(cat => {
+            let total = 0;
+            if (cat.tasks) {
+                total = cat.tasks.reduce((sum, task) => sum + task.days, 0);
+            } else if (cat.subsections) {
+                total = cat.subsections.reduce((sum, sub) => sum + sub.days, 0);
+            } else if (cat.days) {
+                total = cat.days;
+            }
+            return { category: cat.nameEn, categoryFa: cat.name, days: total };
+        });
+
+        const totalDays = categoryTotals.reduce((sum, cat) => sum + cat.days, 0);
+
+        // Detailed tasks
+        const getDetailedTasks = () => {
+            const allTasks = [];
+            projectData.categories.forEach(cat => {
+                if (cat.tasks) {
+                    cat.tasks.forEach(task => {
+                        allTasks.push({ category: cat.nameEn, task: task.taskEn, days: task.days });
+                    });
+                } else if (cat.subsections) {
+                    cat.subsections.forEach(sub => {
+                        allTasks.push({ category: cat.nameEn, task: sub.nameEn, days: sub.days });
+                    });
+                } else if (cat.days) {
+                    allTasks.push({ category: cat.nameEn, task: cat.nameEn, days: cat.days });
+                }
+            });
+            return allTasks.sort((a, b) => b.days - a.days);
+        };
+        const detailedTasks = getDetailedTasks();
+
+        // Colors
+        const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7c7c', '#8dd1e1', '#d084d0', '#ffb347'];
+
+        // Initialize Charts
+        const pieChart = new Chart(document.getElementById('pieChart'), {
+            type: 'pie',
+            data: {
+                labels: categoryTotals.map(cat => cat.category),
+                datasets: [{
+                    data: categoryTotals.map(cat => cat.days),
+                    backgroundColor: colors
+                }]
+            },
+            options: {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                let value = context.raw;
+                                let percentage = ((value / totalDays) * 100).toFixed(1);
+                                return `${label}: ${value} days (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const barChart = new Chart(document.getElementById('barChart'), {
+            type: 'bar',
+            data: {
+                labels: categoryTotals.map(cat => cat.category),
+                datasets: [{
+                    label: 'Days Spent',
+                    data: categoryTotals.map(cat => cat.days),
+                    backgroundColor: '#8884d8'
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        ticks: { maxRotation: 45, minRotation: 45 }
+                    },
+                    y: { beginAtZero: true }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.raw} days`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+const areaChart = new Chart(document.getElementById('areaChart'), {
+    type: 'line',
+    data: {
+        labels: categoryTotals.map(cat => cat.category),
+        datasets: [{
+            label: 'مدت زمان',
+            data: categoryTotals.map(cat => cat.days),
+            fill: true,
+            backgroundColor: 'rgba(136, 132, 216, 0.6)',
+            borderColor: '#8884d8'
+        }]
+    },
+    options: {
+        scales: {
+            x: {
+                ticks: { maxRotation: 45, minRotation: 45 }
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'روز',
+                    font: {
+                        size: 14,
+                        weight: 'bold'
+                    },
+                    color: '#1f2937'
+                }
+            }
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return `${context.raw} روز`;
+                    }
+                }
+            }
+        }
+    }
+});
+
+        // Populate Breakdown and Tasks
+        const breakdownContent = document.getElementById('breakdown-content');
+        categoryTotals.forEach((cat, index) => {
+            const div = document.createElement('div');
+            div.className = 'card';
+            div.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h3>${cat.category}</h3>
+                    <div style="text-align: right;">
+                        <span style="font-size: 1.5rem; font-weight: bold; color: #2563eb;">${cat.days}</span>
+                        <span style="color: #6b7280;">روز</span>
+                    </div>
+                </div>
+                <div style="font-size: 0.875rem; color: #6b7280; margin-bottom: 8px;">${cat.categoryFa}</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: ${(cat.days / Math.max(...categoryTotals.map(c => c.days))) * 100}%; background-color: ${colors[index % colors.length]};"></div>
+                </div>
+                <div style="text-align: right; font-size: 0.875rem; color: #6b7280; margin-top: 4px;">
+                    ${((cat.days / totalDays) * 100).toFixed(1)}% از کل زمان پروژه
+                </div>
+            `;
+            breakdownContent.appendChild(div);
+        });
+
+        const tasksContent = document.getElementById('tasks-content');
+        detailedTasks.slice(0, 15).forEach((task, index) => {
+            const div = document.createElement('div');
+            div.className = 'border-r-4 border-blue-500 pr-4 py-2';
+            div.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h4 style="font-weight: 500; color: #1f2937;">${task.task}</h4>
+                        <p style="font-size: 0.875rem; color: #6b7280;">${task.category}</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-size: 1.125rem; font-weight: 600; color: #2563eb;">${task.days}</span>
+                        <span style="color: #6b7280;">روز</span>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: ${(task.days / detailedTasks[0].days) * 100}%; background-color: #2563eb;"></div>
+                </div>
+            `;
+            tasksContent.appendChild(div);
+        });
+
+        // Tab Navigation
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                tabContents.forEach(content => content.style.display = 'none');
+                document.getElementById(tab.dataset.tab).style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
