@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3918a66b15e481b5f9a3c6916bd93ac7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3918a66b15e481b5f9a3c6916bd93ac7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3918a66b15e481b5f9a3c6916bd93ac7 = L.map(
+                "map_3918a66b15e481b5f9a3c6916bd93ac7",
+                {
+                    center: [36.598221721195834, 59.19589143494025],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b682785eb138998adf513c2d91251ead = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b682785eb138998adf513c2d91251ead.addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var marker_c9c91b0a2accc0eb551db334e85c2485 = L.marker(
+                [36.598221721195834, 59.19589143494025],
+                {
+}
+            ).addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var icon_0f8a4d1dc30d1286530d3f7719700154 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_90d76a40a219ed2fd4c0240c069844ca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a57b4b344a4579b15374fb8dd6013be3 = $(`<div id="html_a57b4b344a4579b15374fb8dd6013be3" style="width: 100.0%; height: 100.0%;">کلاته شیخ ها</div>`)[0];
+                popup_90d76a40a219ed2fd4c0240c069844ca.setContent(html_a57b4b344a4579b15374fb8dd6013be3);
+            
+        
+
+        marker_c9c91b0a2accc0eb551db334e85c2485.bindPopup(popup_90d76a40a219ed2fd4c0240c069844ca)
+        ;
+
+        
+    
+    
+            marker_c9c91b0a2accc0eb551db334e85c2485.bindTooltip(
+                `<div>
+                     کلاته شیخ ها
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c9c91b0a2accc0eb551db334e85c2485.setIcon(icon_0f8a4d1dc30d1286530d3f7719700154);
+            
+    
+            var marker_98c4225145fd088eda7715b8cbe8b9e0 = L.marker(
+                [36.5808186585066, 59.29388712636717],
+                {
+}
+            ).addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var icon_5838a055cd174d4972176d09d808f2f7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_75d3c21094281b63b921642523f4f60e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fe722645d7d7a3465377ee5d57b866f4 = $(`<div id="html_fe722645d7d7a3465377ee5d57b866f4" style="width: 100.0%; height: 100.0%;">کلاته کریم خان</div>`)[0];
+                popup_75d3c21094281b63b921642523f4f60e.setContent(html_fe722645d7d7a3465377ee5d57b866f4);
+            
+        
+
+        marker_98c4225145fd088eda7715b8cbe8b9e0.bindPopup(popup_75d3c21094281b63b921642523f4f60e)
+        ;
+
+        
+    
+    
+            marker_98c4225145fd088eda7715b8cbe8b9e0.bindTooltip(
+                `<div>
+                     کلاته کریم خان
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_98c4225145fd088eda7715b8cbe8b9e0.setIcon(icon_5838a055cd174d4972176d09d808f2f7);
+            
+    
+            var marker_0aec6ce814aee9609513836e58cdcbc5 = L.marker(
+                [36.53579044837013, 59.27220617341296],
+                {
+}
+            ).addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var icon_6723d42f4f651db9b57b52572629b8de = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c824606354adf23d1f5b4db5e9f06374 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_51d528fe9eed745303b57357a84fbc8d = $(`<div id="html_51d528fe9eed745303b57357a84fbc8d" style="width: 100.0%; height: 100.0%;">عبدل آباد</div>`)[0];
+                popup_c824606354adf23d1f5b4db5e9f06374.setContent(html_51d528fe9eed745303b57357a84fbc8d);
+            
+        
+
+        marker_0aec6ce814aee9609513836e58cdcbc5.bindPopup(popup_c824606354adf23d1f5b4db5e9f06374)
+        ;
+
+        
+    
+    
+            marker_0aec6ce814aee9609513836e58cdcbc5.bindTooltip(
+                `<div>
+                     عبدل آباد
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0aec6ce814aee9609513836e58cdcbc5.setIcon(icon_6723d42f4f651db9b57b52572629b8de);
+            
+    
+            var marker_bab78965d1b349fe7ec4bef468090555 = L.marker(
+                [36.52248437171526, 59.20174378670763],
+                {
+}
+            ).addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var icon_737139b7d812615002a69ef2a396aaf2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c6c75103fb3cb6f77b8fb668e6b898fa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2de1c0b00c4ac2babfd8f8e98bf416de = $(`<div id="html_2de1c0b00c4ac2babfd8f8e98bf416de" style="width: 100.0%; height: 100.0%;">ستگ سفید</div>`)[0];
+                popup_c6c75103fb3cb6f77b8fb668e6b898fa.setContent(html_2de1c0b00c4ac2babfd8f8e98bf416de);
+            
+        
+
+        marker_bab78965d1b349fe7ec4bef468090555.bindPopup(popup_c6c75103fb3cb6f77b8fb668e6b898fa)
+        ;
+
+        
+    
+    
+            marker_bab78965d1b349fe7ec4bef468090555.bindTooltip(
+                `<div>
+                     ستگ سفید
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bab78965d1b349fe7ec4bef468090555.setIcon(icon_737139b7d812615002a69ef2a396aaf2);
+            
+    
+            var marker_0bcf15902d6e4680b547d847d07f925e = L.marker(
+                [36.634648685918314, 59.197081714168306],
+                {
+}
+            ).addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var icon_fd9d335ed7ff4ae109a8e423034f0525 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a106c874c89b5420c7df0c8d123d2082 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1968e0015cdd1a76606f2b3d959ab666 = $(`<div id="html_1968e0015cdd1a76606f2b3d959ab666" style="width: 100.0%; height: 100.0%;">ذهاب 1</div>`)[0];
+                popup_a106c874c89b5420c7df0c8d123d2082.setContent(html_1968e0015cdd1a76606f2b3d959ab666);
+            
+        
+
+        marker_0bcf15902d6e4680b547d847d07f925e.bindPopup(popup_a106c874c89b5420c7df0c8d123d2082)
+        ;
+
+        
+    
+    
+            marker_0bcf15902d6e4680b547d847d07f925e.bindTooltip(
+                `<div>
+                     ذهاب 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0bcf15902d6e4680b547d847d07f925e.setIcon(icon_fd9d335ed7ff4ae109a8e423034f0525);
+            
+    
+            var marker_04f4979dad84e4b456f26f5d80258d0a = L.marker(
+                [36.63459683386565, 59.19891430085947],
+                {
+}
+            ).addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var icon_52ed6b2f33982bbe8fa0a196acf5cac0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_add3d109556cbbeea25701b6a1551328 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0ade4d23c45de3f08bca36a8981d1aa3 = $(`<div id="html_0ade4d23c45de3f08bca36a8981d1aa3" style="width: 100.0%; height: 100.0%;">ذهاب 2</div>`)[0];
+                popup_add3d109556cbbeea25701b6a1551328.setContent(html_0ade4d23c45de3f08bca36a8981d1aa3);
+            
+        
+
+        marker_04f4979dad84e4b456f26f5d80258d0a.bindPopup(popup_add3d109556cbbeea25701b6a1551328)
+        ;
+
+        
+    
+    
+            marker_04f4979dad84e4b456f26f5d80258d0a.bindTooltip(
+                `<div>
+                     ذهاب 2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_04f4979dad84e4b456f26f5d80258d0a.setIcon(icon_52ed6b2f33982bbe8fa0a196acf5cac0);
+            
+    
+            var marker_66dba30b93361fc044c7b96b46e28cf7 = L.marker(
+                [36.62415752807364, 59.2573215928037],
+                {
+}
+            ).addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var icon_1989cec2bfdc368597678c461826e70f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b2944fd81e10ac110064e3c251f1ed9f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ae9b23c4f5c2841f3688bda908bf714b = $(`<div id="html_ae9b23c4f5c2841f3688bda908bf714b" style="width: 100.0%; height: 100.0%;">درنگون</div>`)[0];
+                popup_b2944fd81e10ac110064e3c251f1ed9f.setContent(html_ae9b23c4f5c2841f3688bda908bf714b);
+            
+        
+
+        marker_66dba30b93361fc044c7b96b46e28cf7.bindPopup(popup_b2944fd81e10ac110064e3c251f1ed9f)
+        ;
+
+        
+    
+    
+            marker_66dba30b93361fc044c7b96b46e28cf7.bindTooltip(
+                `<div>
+                     درنگون
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_66dba30b93361fc044c7b96b46e28cf7.setIcon(icon_1989cec2bfdc368597678c461826e70f);
+            
+    
+            var marker_5eb82164873cfc91cf9a2017f3628500 = L.marker(
+                [36.61426161635834, 59.07077835624056],
+                {
+}
+            ).addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var icon_79c15279e8a629157969a239a3a6bf0f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_99e7ee2895676e84340bfdeadca3f89c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e9ca31db87c1999f65266d4ebe81e66 = $(`<div id="html_0e9ca31db87c1999f65266d4ebe81e66" style="width: 100.0%; height: 100.0%;">خرم آباد</div>`)[0];
+                popup_99e7ee2895676e84340bfdeadca3f89c.setContent(html_0e9ca31db87c1999f65266d4ebe81e66);
+            
+        
+
+        marker_5eb82164873cfc91cf9a2017f3628500.bindPopup(popup_99e7ee2895676e84340bfdeadca3f89c)
+        ;
+
+        
+    
+    
+            marker_5eb82164873cfc91cf9a2017f3628500.bindTooltip(
+                `<div>
+                     خرم آباد
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5eb82164873cfc91cf9a2017f3628500.setIcon(icon_79c15279e8a629157969a239a3a6bf0f);
+            
+    
+            var marker_24eaa75bbf0c9d4324a93d4cec54c3ec = L.marker(
+                [36.61573530409706, 59.134346877652],
+                {
+}
+            ).addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var icon_53ac2cb1bddf3782596932389968e130 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_63d8eb6847a0334fed7da3b77bb26a89 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_54fd92b8ac8b2417005c01128fd2815a = $(`<div id="html_54fd92b8ac8b2417005c01128fd2815a" style="width: 100.0%; height: 100.0%;">جمع آب</div>`)[0];
+                popup_63d8eb6847a0334fed7da3b77bb26a89.setContent(html_54fd92b8ac8b2417005c01128fd2815a);
+            
+        
+
+        marker_24eaa75bbf0c9d4324a93d4cec54c3ec.bindPopup(popup_63d8eb6847a0334fed7da3b77bb26a89)
+        ;
+
+        
+    
+    
+            marker_24eaa75bbf0c9d4324a93d4cec54c3ec.bindTooltip(
+                `<div>
+                     جمع آب
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_24eaa75bbf0c9d4324a93d4cec54c3ec.setIcon(icon_53ac2cb1bddf3782596932389968e130);
+            
+    
+            var marker_7fa4dfbab803ce41fbe3edac0982d36a = L.marker(
+                [36.6136251982792, 59.066423286632876],
+                {
+}
+            ).addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var icon_24e31bf515bd7b0cef792648162f0f3e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4a0f1944e68f55bcfd84407fde06fc2e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_70558985d732db0629037e3abddeda41 = $(`<div id="html_70558985d732db0629037e3abddeda41" style="width: 100.0%; height: 100.0%;">بینام</div>`)[0];
+                popup_4a0f1944e68f55bcfd84407fde06fc2e.setContent(html_70558985d732db0629037e3abddeda41);
+            
+        
+
+        marker_7fa4dfbab803ce41fbe3edac0982d36a.bindPopup(popup_4a0f1944e68f55bcfd84407fde06fc2e)
+        ;
+
+        
+    
+    
+            marker_7fa4dfbab803ce41fbe3edac0982d36a.bindTooltip(
+                `<div>
+                     بینام
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7fa4dfbab803ce41fbe3edac0982d36a.setIcon(icon_24e31bf515bd7b0cef792648162f0f3e);
+            
+    
+            var marker_da1e661eb731af0e9c3012da71fa8109 = L.marker(
+                [36.5654482421904, 59.08972059601427],
+                {
+}
+            ).addTo(map_3918a66b15e481b5f9a3c6916bd93ac7);
+        
+    
+            var icon_55d491a7865c42989f5ed32d92c14235 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b4164e35322167b410d5fe4c6cefdf72 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_60edaae0834381deeb5636858617c2bd = $(`<div id="html_60edaae0834381deeb5636858617c2bd" style="width: 100.0%; height: 100.0%;">آبقد</div>`)[0];
+                popup_b4164e35322167b410d5fe4c6cefdf72.setContent(html_60edaae0834381deeb5636858617c2bd);
+            
+        
+
+        marker_da1e661eb731af0e9c3012da71fa8109.bindPopup(popup_b4164e35322167b410d5fe4c6cefdf72)
+        ;
+
+        
+    
+    
+            marker_da1e661eb731af0e9c3012da71fa8109.bindTooltip(
+                `<div>
+                     آبقد
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_da1e661eb731af0e9c3012da71fa8109.setIcon(icon_55d491a7865c42989f5ed32d92c14235);
+            
+</script>
+</html>

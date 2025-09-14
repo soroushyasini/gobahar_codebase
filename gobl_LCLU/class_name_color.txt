@@ -1,0 +1,17 @@
+# Class names dictionary
+class_names = {
+    2: "Trees",
+    4: "Crops",
+    5: "Built Area",
+    6: "Bare Ground",
+    9: "Rangeland"
+}
+
+# Color dictionary for classes
+color_dict = {
+    2: "#358221",  # Trees
+    4: "#ED022A",  # Crops
+    5: "#FFDB5C",  # Built Area
+    6: "#EDE9E4",  # Bare Ground
+    9: "#C6AD8D"   # Rangeland
+}
