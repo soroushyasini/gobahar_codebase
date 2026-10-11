@@ -5,7 +5,7 @@
 *.yaml text eol=lf
 *.md text eol=lf
 # Historical notebook JSON and scientific assets must retain their stored bytes.
-*.ipynb -text
+*.ipynb -text whitespace=cr-at-eol
 *.tif binary
 *.shp binary
 *.shx binary
