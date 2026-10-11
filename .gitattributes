@@ -1,0 +1,19 @@
+# Make new source and documentation portable across development platforms.
+*.py text eol=lf
+*.toml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+# Historical notebook JSON and scientific assets must retain their stored bytes.
+*.ipynb -text whitespace=cr-at-eol
+*.tif binary
+*.shp binary
+*.shx binary
+*.dbf binary
+*.xlsx binary
+*.xls binary
+*.png binary
+*.zip binary
+*.rar binary
+*.pdf binary
+*.docx binary

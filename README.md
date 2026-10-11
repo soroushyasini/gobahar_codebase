@@ -1,234 +1,159 @@
----
-direction: rtl
-lang: fa
----
+# Golbahar subsidence research
 
-# گزارش زمانی پروژه
+Geospatial analysis of land subsidence around Golbahar and the Mashhad plain,
+combining InSAR displacement observations with GNSS, groundwater measurements,
+land-cover rasters, and infrastructure/critical-site locations.
 
-**تولید شده در شهریور 1404 - سروش یاسینی
+This repository includes supported Python utilities and the historical notebooks,
+data, figures, and reports from the research project. Historical notebooks are
+exploratory records with known limitations; see the [code audit](docs/audit.md)
+before relying on their results.
 
-**دستورالعمل‌های نمایش یا تبدیل سند:**
+## Repository map
 
-1. **نمایش در ویرایشگر Markdown**: از ویرایشگری مانند VS Code با افزونه‌های Markdown (مانند Markdown Preview Enhanced) استفاده کنید و تنظیمات RTL را فعال کنید (معمولاً با افزودن `dir="rtl"` در HTML خروجی).
-2. **تبدیل به Word**: از ابزارهایی مانند Pandoc استفاده کنید (`pandoc -o report.docx geospatial_time_report.md --metadata lang=fa --metadata dir=rtl`) و فونت پارسی (مانند B Nazanin یا Vazir) را اعمال کنید.
-3. **تبدیل به HTML**: از Pandoc یا افزونه‌های Markdown استفاده کنید و اطمینان حاصل کنید که `<html dir="rtl" lang="fa">` در خروجی تنظیم شده باشد.
-4. **فونت پیشنهادی**: برای خوانایی بهتر، از فونت‌های پارسی مانند B Nazanin، Vazir یا IRANSans (اندازه 14 برای عناوین، 12 برای متن، 10 برای حاشیه‌نویسی‌ها) استفاده کنید.
-5. **فاصله‌گذاری**: فاصله خطوط را به 1.15 یا 1.5 تنظیم کنید.
+```text
+src/gobahar/           Tested raster, time-series, and SAFE metadata utilities
+tests/                Synthetic regression fixtures and CLI tests
+notebooks/            Maintained examples using the package
+research/
+  land_cover/         Annual land-cover rasters and metro observations
+  gnss_insar/         GNSS and InSAR comparison experiments
+  groundwater_insar/  Piezometer and InSAR experiments
+  infrastructure/    Corridor profiles, shapefiles, and mapping experiments
+  critical_sites/    Critical-site coordinates and time-series experiments
+  sentinel_metadata/  Sentinel-1 SAFE manifest and original inspection notebook
+data/raw/             Ignored local acquisitions; see data/README.md
+outputs/              Ignored results from new runs
+reports/              Original Persian project time report and interactive HTML
+docs/                 Audit, migration guide, and research workflow catalog
+requirements/         Tested runtime version constraints
+scripts/              Repository validation utilities
+.github/              CI, dependency updates, and contribution templates
+```
 
-## زمان صرف شده بر اساس دسته‌بندی و زیربخش
+The [migration guide](docs/migration.md) maps every former root directory to its
+new location. The original README is preserved as the
+[Persian project time report](reports/project_time_report.fa.md); the
+[interactive report](reports/project_time_report.html) can be downloaded and opened
+in a browser (GitHub's file view does not execute it).
 
----
+## Setup
 
-### دسته‌بندی: مطالعه اولیه و آماده‌سازی محیط پردازش
-**کل زمان:** ۲۷.۰ روز
+Use Python 3.11 or newer. CI exercises Python 3.11 and 3.13 on Linux and 3.13 on
+Windows. From the repository root:
 
-- **وظیفه: نرم‌افزار سار پروز**  
-  **زمان صرف شده:** ۴.۰ روز  
-  > حاشیه‌نویسی: برخی از مراحل: نصب متلب، مکاتبه برای دریافت سریال نامبر و نصب ماشین مجازی
+```bash
+git clone https://github.com/soroushyasini/gobahar_codebase.git
+cd gobahar_codebase
+python -m venv .venv
+```
 
-- **وظیفه: مطالعه در مورد پردازش با سارپروز**  
-  **زمان صرف شده:** ۱۴.۰ روز  
-  > حاشیه‌نویسی: پس از تست‌های فراوان با دیتاست انویست، تصمیم بر آن شد که سارپروز کنار گذاشته شود و به صورت کلی پردازش برای این سنجنده با اسباس صورت بگیرد
+Activate the environment:
 
-- **وظیفه: کانفیگ متلب برای پردازش پی‌اس**  
-  **زمان صرف شده:** ۲.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
+```powershell
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+```
 
-- **وظیفه: مطالعه در مورد پوشش سنجنده‌های مختلف در محدوده مکانی**  
-  **زمان صرف شده:** ۷.۰ روز  
-  > حاشیه‌نویسی: در این گام، در نهایت با اسکریپت پایتون، تمامی داده‌های قابل دسترس در نمودار زمانی از بازه زمانی ۲۰۰۰ تا ۲۰۲۴ میلادی ترسیم شد و در اولین جلسه با گلبهار، مورد بحث قرار گرفت
+```bash
+# Linux / macOS
+source .venv/bin/activate
+```
 
----
+Install the supported code and development tools:
 
-### دسته‌بندی: دانلود داده
-**کل زمان:** ۳۸.۰ روز
+```bash
+python -m pip install -c requirements/constraints.txt -e ".[dev]"
+gobahar --help
+```
 
-#### زیربخش: دانلود دیتاست سنتینل-۱
-**زمان صرف شده:** ۲۱.۰ روز  
-> حاشیه‌نویسی: حدود ۲ ترابایت داده خام سنینل دانلود شد. دانلود به صورت شبانه‌روزی صورت گرفت یعنی در بازه حدود ۱۴ روزه و روزی بیش از ۱۲ ساعت کار. برای این‌کار، ای‌پی‌آی جدیدی در زبان پایتون توسعه یافت چون دیگر سازمان فضایی اروپا اجازه دانلود به روش قبل را نمی‌داد.
+For plotting, mapping, and the historical notebooks, add the research extra:
 
-#### زیربخش: دانلود داده پیش‌پردازش‌شده از لیک اسباس
-**زمان صرف شده:** ۱۴.۰ روز  
-> حاشیه‌نویسی: فرایند به شدت با اخلال بود چرا که آی‌پی ایران در آن زمان بلاک می‌شد. بسیاری از فایل‌ها در نهایت به صورت دستی دانلود شد و با اسکریپت‌نویسی در پوشه مربوطه قرار گرفت.
+```bash
+python -m pip install -c requirements/constraints.txt -e ".[dev,research]"
+python -m ipykernel install --user --name gobahar --display-name "Python (gobahar)"
+jupyter lab
+```
 
-#### زیربخش: دانلود فایل اربیت
-**زمان صرف شده:** ۳.۰ روز  
-> حاشیه‌نویسی: اسکریپت توسعه داده شد تا به صورت خودکار، حدود ۷۰۰ فایل اربیت برای همه تصاویر سنتینل دانلود شود
+Select the `Python (gobahar)` kernel. Geospatial binary wheels are available for
+the tested platforms; systems without compatible wheels may need a managed GDAL
+environment. The constraints file records tested direct runtime versions; it is
+not a complete transitive lockfile. Research extras declare observed notebook
+imports, and do not guarantee that every historical experiment executes unchanged.
 
----
+## Supported operations
 
-### دسته‌بندی: پردازش سنجش‌ازدور
-**کل زمان:** ۱۴۰.۰ روز
+Read orbit pass metadata from the bundled Sentinel-1 manifest:
 
-#### زیربخش: پردازش تصاویر خام بالاگذر سنتینل برای روش پی‌اس
-**زمان صرف شده:** ۵۰.۰ روز  
-> حاشیه‌نویسی: شامل همه مراحل از قبیل تشکیل اینترفروگرام تا تولید نقاط. به تفصیل در گزارش فصل سوم آمده است. مراحل با نرم‌افزار استمپس و محیط متلب صورت گرفت
+```bash
+gobahar pass-direction research/sentinel_metadata/manifest.safe
+```
 
-#### زیربخش: پردازش تصاویر خام پایین‌گذر سنتینل برای روش پی‌اس
-**زمان صرف شده:** ۵۰.۰ روز  
-> حاشیه‌نویسی: شامل همه مراحل از قبیل تشکیل اینترفروگرام تا تولید نقاط. به تفصیل در گزارش فصل سوم آمده است. مراحل با نرم‌افزار استمپس و محیط متلب صورت گرفت
+Sample one or more rasters at points from a CSV or the first worksheet of an XLSX.
+For a table with verified longitude/latitude columns:
 
-#### زیربخش: پردازش تصاویر پیش‌پردازش‌شده سنتینل بالاگذر برای روش اسباس
-**زمان صرف شده:** ۲۰.۰ روز  
-> حاشیه‌نویسی: مراحل با نرم‌افزار لیک اسباس انجام شد، برخی مراحل برای بهبود دقت چند بار انجام شد. شرح تکنیکال در مقاله و گزارش فصل سوم آمده
+```bash
+gobahar sample --points data/raw/points.csv --x-column longitude --y-column latitude --points-crs EPSG:4326 --raster research/land_cover/LULC_2024_10m.tif --output outputs/point_land_cover.csv
+```
 
-#### زیربخش: پردازش تصاویر پیش‌پردازش‌شده سنتینل پایین‌گذر برای روش اسباس
-**زمان صرف شده:** ۲۰.۰ روز  
-> حاشیه‌نویسی: مراحل با نرم‌افزار لیک اسباس انجام شد، برخی مراحل برای بهبود دقت چند بار انجام شد. شرح تکنیکال در مقاله و گزارش فصل سوم آمده
+Each raster's filename stem becomes an output column. Input columns and row order
+are retained. Coordinates are transformed into each raster's actual CRS; sampling
+uses the containing pixel without interpolation. Nodata, masked pixels, and points
+outside the raster become empty CSV cells. Valid zero values remain zero. The
+command refuses to overwrite an existing output or collide with input columns.
 
----
+Fit a descriptive linear trend to a CSV or XLSX series:
 
-### دسته‌بندی: GIS
-**کل زمان:** ۵۱.۰ روز
+```bash
+gobahar trend --input data/raw/observations.csv --date-column date --value-column displacement --unit mm
+```
 
-#### زیربخش: استخراج اسلایس‌های زمانی از دیتابیس فرونشست اسباس
-**زمان صرف شده:** ۷.۰ روز  
-> حاشیه‌نویسی: توسعه کد برای استخراج اوتوماتیک داده از تنسور مکان زمان بالاگذر و پایین‌گذر
+Use unambiguous Gregorian dates such as `2020-01-31`. Dates are interpreted in UTC;
+convert Jalali dates explicitly before using this command. Missing/nonfinite data
+and series without two distinct timestamps are rejected. JSON output includes
+the slope per day, annual rate using 365.25 days/year, intercept at the earliest
+date, observation count, and descriptive R-squared. `--days-per-year` changes that
+reporting convention. Units, displacement sign, reference epoch, and LOS/vertical
+geometry remain the caller's responsibility; this command applies no conversion.
 
-#### زیربخش: جمع‌آوری و مرتب‌سازی داده‌های مربوط به فصل دوم
-**زمان صرف شده:** ۱۴.۰ روز  
-> حاشیه‌نویسی: داده‌ها از منابع مختلف سرجمع و پوشه‌بندی شدند. بسیاری از داده‌ها نیاز به تغییرات جی‌آی‌اسی و تنظیم سیستم مختصات داشتند. در نهایت همه داده‌ها در گوگل درایو به صورت پوشه‌بندی‌شده ذخیره شد.
+The same operations are available as Python functions:
 
-#### زیربخش: استخراج، پس‌پردازش و نمایش داده پی‌اس
-**زمان صرف شده:** ۱۴.۰ روز  
-> حاشیه‌نویسی: در این گام، داده‌های پردازش‌شده در متلب، با اسکریپت‌نویسی با زبان متلب به صورت فایل اکسل از نرم‌افزار خارج شد. داده خام پردازش شد و مختصات و تایم‌سری آن برای نمایش بهینه شد. در نهایت کد پایتون توسعه یافت تا به صورت تعاملی بتوان سری زمانی نقاط دلخواه را ترسیم کرد.
+```python
+from gobahar.manifest import read_pass_direction
+from gobahar.raster import sample_raster
+from gobahar.timeseries import fit_linear_trend
+```
 
-#### زیربخش: تولید نقشه
-**کل زمان:** ۳۹.۰ روز
+See [maintained land-cover sampling](notebooks/land_cover.ipynb) and
+[SAFE metadata inspection](notebooks/sentinel_metadata.ipynb) for worked examples.
+The land-cover notebook requires an explicit point CRS because historical CRS
+assumptions conflict. See the [research catalog](docs/research-workflows.md) for
+the remaining notebooks and missing inputs.
 
-- **وظیفه: شکل۴-۱-نقشه موقعیت دشت مشهد**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۲-نقشه واحدهای زمین‌شناسی دشت مشهد**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۳-نقشه نفوذپذیری دشت مشهد**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه-nویسی: بدون توضیحات
-- **وظیفه: شکل۴-۴-نقشه پوشش اراضی در محدوده دشت مشهد**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۵-نقشه زمین‌شناسی شهر جدید گلبهار و محیط پیرامون آن**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۶-نقشه پوشش اراضی در گلبهار و حریم آن**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۷-نقشه هم‌ضخامت آبرفت در محدوده دشت مشهد**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۱۰-موقعیت گسل‌های دشت مشهد به همراه موقعیت شهر جدید گلبهار**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۱۱-موقعیت گسل‌های پیرامون محدوده مورد مطالعه**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۱۲-موقعیت سونداژها و خطوط برداشت بر روی محدوده مورد مطالعه**  
-  **زمان صرف شده:** ۲.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۱۳-نقشه هم‌مقاومت ویژه**  
-  **زمان صرف شده:** ۲.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۱۴-نقشه هم‌مقاومت ویژه ظاهری**  
-  **زمان صرف شده:** ۲.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۱۵-نقشه هم‌مقاومت ویژه ظاهری**  
-  **زمان صرف شده:** ۲.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۳۳-نقشه میانگین میزان فرونشست**  
-  **زمان صرف شده:** ۲.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۳۴-نقشه ارتباط واحدهای زمین‌شناسی با فرونشست در شمال شرق محدوده**  
-  **زمان صرف شده:** ۲.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۴-۳۵-نقشه ارتباط گسل چشمه گیالس با فرونشست در شمال شرق محدوده**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۳-۲-پوشش سنجنده‌های راداری در محدوده مطالعات**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۳-۴-بخشی از کد توسعه‌یافته با زبان پایتون جهت ترسیم خروجی روش PS**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۳-۱۴-نرخ فرونشست سالانه محدوده گلبهار در بازه زمانی ۱۳۸۲ تا ۱۳۸۴ (پایین‌گذر)**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۳-۱۵-نرخ فرونشست سالانه محدوده گلبهار در بازه زمانی ۱۳۸۹ تا ۱۳۹۰ (پایین‌گذر)**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۳-۱۶-فلوچارت مراحل پردازش تصاویر راداری سنتینل**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۳-۲۴-نرخ میانگین سالانه فرونشست محدوده گلبهار در بازه ۱۴۰۳-۱۳۹۴ (سنجنده سنتینل، بالاگذر)**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۳-۲۵-نرخ میانگین سالانه فرونشست محدوده گلبهار در بازه ۱۴۰۲-۱۳۹۴ (سنجنده سنتینل، پایین‌گذر)**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۳-۲۶-میزان تجمعی فرونشست محدوده گلبهار در بازه ۱۴۰۳-۱۳۹۴ (سنجنده سنتینل، بالاگذر)**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۳-۲۷-میزان تجمعی فرونشست محدوده گلبهار در بازه ۱۴۰۲-۱۳۹۴ (سنجنده سنتینل، پایین‌گذر)**  
-  **زمان صرف شده:** ۱.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: اشکال ۲۷ تا ۴۴ شامل فرونشست سالانه و سال به سال**  
-  **زمان صرف شده:** ۷.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۳-۵۶-نرخ فرونشست سالانه محدوده مطالعاتی به روش Persistant Scatterer (سنجنده سنتینل)**  
-  **زمان صرف شده:** ۴.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
-- **وظیفه: شکل۳-۵۷-موقعیت مکانی ایستگاه GNSS گلمکان**  
-  **زمان صرف شده:** ۲.۰ روز  
-  > حاشیه‌نویسی: بدون توضیحات
+## Quality checks
 
-#### زیربخش: ذخیره داده‌ها
-**زمان صرف شده:** ۳.۰ روز  
-> حاشیه‌نویسی: کدگذاری و ذخیره‌سازی فایل‌ها و نقشه‌ها به صورت ژئوپکیج برای دسترسی آسان در صورت نیاز به ویرایش
+```bash
+python -m ruff check .
+python -m ruff format --check .
+python -m pytest
+python scripts/check_notebooks.py
+python -m build
+```
 
----
+Tests use small synthetic rasters and dated observations without external APIs or
+large radar stacks. CI enforces at least 90% coverage for supported Python code,
+validates notebook schemas, and builds/installs a wheel. Historical notebooks are
+not executed by CI. New maintained notebooks must have cleared outputs and valid
+Python cells. See [CONTRIBUTING.md](CONTRIBUTING.md) for the development process.
 
-### دسته‌بندی: منتورینگ و همکاری با تیم
-**کل زمان:** ۲۲.۰ روز
+## Data and reuse
 
-#### زیربخش: همکاری با خانم اسماعیلی‌تبار
-- **وظیفه: آماده‌سازی سیستم شخصی**  
-  **زمان صرف شده:** ۲.۰ روز  
-  > حاشیه‌نویسی: نصب ویندوز و نرم‌افزار آرک‌جی‌آی‌اس پرو برای سهولت طراحی نقشه‌های جی‌آی‌اسی
-- **وظیفه: انتقال دانش**  
-  **زمان صرف شده:** ۱۰.۰ روز  
-  > حاشیه‌نویسی: انتقال دانش جی‌آی‌اسی و طراحی قالب‌های تهیه نقشه، برگزاری جلسات دو نفره برای رفع عیوب احتمالی
+Bundled research assets remain in their workspaces for provenance and relative
+path compatibility. Large InSAR raster stacks are not included. New acquisitions
+belong in `data/raw/`, and new results in `outputs/`; both are ignored. Document
+CRS, units, date conventions, nodata policy, checksums, and processing lineage
+using the [data guidance](data/README.md).
 
-#### زیربخش: همکاری با آقای شریفیان
-- **وظیفه: ترسیم داده‌های ژئوتکنیک**  
-  **زمان صرف شده:** ۱۰.۰ روز  
-  > حاشیه‌نویسی: برگزاری جلسات دو نفره برای نیازسنجی، توسعه نقشه‌های تعاملی و وب‌مپ برای ایشان
-
----
-
-### دسته‌بندی: گزارش‌نویسی و مستندسازی
-**کل زمان:** ۱۴.۰ روز  
-> حاشیه‌نویسی: تولید گزارش جامع مسیر پردازشی برای فصل سوم
-
----
-
-### دسته‌بندی: مصورسازی داده‌ها
-**کل زمان:** ۵۷.۰ روز
-
-#### زیربخش: مقایسه جی‌پی‌اس و اینسار
-**زمان صرف شده:** ۷.۰ روز  
-> حاشیه‌نویسی: هک اخلاقی سامانه فروش محتوای سازمان نقشه‌برداری، نرمال‌سازی سری زمانی ایستگاه گلمکان، استخراج داده متناظر با ایستگاه، ترسیم و محاسبات معادله خطی درجه یک  
-> ****تمامی کد‌ها به صورت اپن‌سورس در لینک گیت‌هاب موجود است****
-
-#### زیربخش: گراف‌های مقایسه موردی پیزومتر با اینسار
-**زمان صرف شده:** ۳۰.۰ روز  
-> حاشیه‌نویسی: توسعه کتابخانه‌های ترکیب داده‌های اینسار و گراف پیزومتر، تمیزکاری داده‌های پراکنده پیزومتر، توسعه کد برای ترسیم خودکار در تعداد زیاد، طراحی و پیاده‌سازی قابلیت ترسیم ترندلاین‌های شکسته و مجزا برای داده‌های دارای شکست یا نویز  
-> ****تمامی کد‌ها به صورت اپن‌سورس در لینک گیت‌هاب موجود است****
-
-#### زیربخش: گراف‌های فرونشست نقطه‌ای نقاط پرخطر برای فصل هفتم
-**زمان صرف شده:** ۲۰.۰ روز  
-> حاشیه‌نویسی: توسعه کد خودکار برای استخراج نقاط سری زمانی بیش از ۴۵ نقطه به صورت خودکار از تنسور تولیدشده در مراحل پردازش فرونشست، ترسیم خودکار سری زمانی نقاط با بیس‌لاین و اسکیل قابل‌تنظیم جهت بهبود مقایسه  
-> ****تمامی کد‌ها به صورت اپن‌سورس در لینک گیت‌هاب موجود است****
-
----
-
-## کل زمان صرف شده: ۳۴۹.۰ روز
+No repository license was present at the audit baseline. Code reuse terms and
+third-party dataset redistribution permissions need an explicit owner decision;
+this cleanup does not assign a license to either.
