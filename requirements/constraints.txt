@@ -1,6 +1,6 @@
 # Tested direct runtime versions, shared by Linux/Windows CI.
 # This is a constraints snapshot, not a lock of every transitive dependency.
-numpy==2.2.4
+numpy==2.4.6
 pandas==2.2.3
 rasterio==1.4.3
 pyproj==3.7.2
