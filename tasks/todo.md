@@ -37,5 +37,5 @@ Dependencies: 3 and 4. Files: packaging, CI, developer and audit documentation.
 
 ## Checkpoint: handoff
 - [x] Local quality gates pass and results are recorded in the audit.
-- [ ] Reviewable commits are pushed and a pull request is attached.
+- [x] Reviewable commits are pushed and pull request #1 is attached.
 - [x] Remaining scientific/data-governance work is explicitly documented.
