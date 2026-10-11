@@ -1,5 +1,38 @@
-gobl_LCLU/tiffs_reprojected
-gobl_LCLU/tiffs
-phase_2/metro_subsidence_points.csv
-phase_2/tiffs_reprojected
-phase_2/tiffs
+# Python and development tools
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Notebook/editor state and local credentials
+.ipynb_checkpoints/
+.~lock.*#
+~$*
+*.tmp
+*.log
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# External radar stacks and generated runs (historical tracked assets remain)
+research/land_cover/tiffs/
+research/land_cover/tiffs_reprojected/
+research/infrastructure/tiffs/
+research/infrastructure/tiffs_reprojected/
+research/infrastructure/metro_subsidence_points.csv
+data/raw/*
+!data/raw/.gitkeep
+outputs/*
+!outputs/.gitkeep
